@@ -17,7 +17,7 @@ def make_changes():
     text = input("Enter data: ")
     print("==================")
     undo.append(document)
-    document += text
+    document +=" "+ text
     redo.clear()
 
 def Undo():
