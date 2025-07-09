@@ -1,14 +1,16 @@
+from collections import Counter
 lib_data={}
 member_count=0
 book_count=0
 temp=[]
-books={}
 def menu():
 	print("=============")
 	print("1)Add Data")
 	print("2)Display Data")
 	print("3)Display Average Books Borrowed")
 	print("4)Display the students who have not borrowed any books")
+	print("5)Display leasts borrowed book")
+	print("6)Display most borrowed book")
 	print("0)Exit Program")
 	print("=============")
 
@@ -41,8 +43,28 @@ def not_borrowed():
 			temp.append(name)
 	print("The students who have not borrowed any books: ",temp)
 def min_borrowed():
-	books=Counter(lib_data.items())
-	print(books)
+	all_books=[]
+	for books in lib_data.values():
+		all_books.extend(books)
+	if not all_books:
+		print("No books have been borrowed yet!!")
+		return
+	book_count=Counter(all_books)
+	min_count=min(book_count.values())
+	least_borrowed=[book for book, count in book_count.items() if count==min_count]
+	print("Least Borrowed book: ",least_borrowed," with ",min_count," borrows")
+
+def max_borrowed():
+	all_books=[]
+	for books in lib_data.values():
+		all_books.extend(books)
+	if not all_books:
+		print("No books have been borrowed yet!!")
+		return
+	book_count=Counter(all_books)
+	max_count=max(book_count.values())
+	most_borrowed=[book for book, count in book_count.items() if count==max_count]
+	print("Most borrowed book: ",most_borrowed," With ",max_count," borrows")
 while True:
 	menu()
 	choice=int(input("Enter your choice: "))
@@ -57,6 +79,8 @@ while True:
 			not_borrowed()
 		case 5:
 			min_borrowed()
+		case 6:
+			max_borrowed()
 		case 0:
 			print("Exiting Program....")
 			break
