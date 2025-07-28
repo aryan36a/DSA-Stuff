@@ -9,6 +9,7 @@ def Menu():
     print("3)Selection sort")
     print("4)Print Data")
     print("5)Check Sort")
+    print("6)Display Top 5 Salaries")
     print("0)Exit")
     print("==================")
 
@@ -24,7 +25,7 @@ def bubble_sort(salaries):
         for j in range(len(bubble_sort_list)-1):
             if bubble_sort_list[j]>bubble_sort_list[j+1]:
                 bubble_sort_list[j],bubble_sort_list[j+1]=bubble_sort_list[j+1],bubble_sort_list[j]
-    print(bubble_sort_list)
+    return(bubble_sort_list)
 
 #Selection Sort
 def selection_sort(salaries):
@@ -45,6 +46,18 @@ def sort_check():
             print("The sort is same for both the sorting methods")
         else:
             print("Error")
+
+#Display top 5 salaries
+def top_salaries():
+    temp=[]
+    if len(salaries)>=5:
+        bubble_sort(salaries)
+        for i in range(1,6):
+            temp.append(bubble_sort_list[len(bubble_sort_list)-i])
+        print(temp)
+    else:
+        print("Not Enough Data")
+
 #Exit Code
 def exit_code():
     print("Exiting",end='')
@@ -61,13 +74,15 @@ while True:
         case 1:
             add_data()
         case 2:
-            bubble_sort(salaries)
+            print("Bubble Sort: ",bubble_sort(salaries))
         case 3:
             selection_sort(salaries)
         case 4:
             print(salaries)
         case 5:
             sort_check()
+        case 6:
+            top_salaries()
         case 0:
            exit_code()
            break
