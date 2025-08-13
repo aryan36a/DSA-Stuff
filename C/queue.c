@@ -27,7 +27,7 @@ int main(){
 		}
 	}
 	int dequeue(){
-		if (first==-1||first>last){
+		if (first==-1||last==-1||first>last){
 			printf("Queue Underflow");
 		}
 		else{
