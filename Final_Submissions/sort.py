@@ -1,3 +1,9 @@
+#In a company, employee salaries are stored in a list as floating-point numbers. Write a
+#Python program that sorts the employee salaries in ascending order using the following two
+#algorithms:
+#• Selection Sort: Sort the salaries using the selection sort algorithm.
+#• Bubble Sort: Sort the salaries using the bubble sort algorithm.
+#After sorting the salaries, the program should display top five highest salaries in the company
 import time
 import os
 import keyboard
