@@ -35,13 +35,17 @@ int main()
 
     int found = 0;
     int index = del % size;
-    
-    if(hash_table[index] == del) {
-        hash_table[index] = -1;
-        found = 1;
-        printf("Data %d deleted from index %d.\n", del, index);
-        break;
+    int start = index;
+    while(hash_table[index] != -1) {
+        if(hash_table[index] == del) {
+            hash_table[index] = -1;
+            found = 1;
+            printf("Data %d deleted from index %d.\n", del, index);
+            break;
         }
+        index = (index + 1) % size;
+        if(index == start) break;
+    }
     if(!found) {
         printf("Data %d not found in hash table.\n", del);
     }
